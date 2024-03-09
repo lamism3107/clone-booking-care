@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { push } from "connected-react-router";
 import * as actions from "../../store/actions";
 import "./Login.scss";
-import { FormattedMessage } from "react-intl";
 import { handleLoginApi } from "../../services/userService";
 
 class Login extends Component {
@@ -28,6 +27,7 @@ class Login extends Component {
       password: e.target.value,
     });
   };
+
   handleLogin = async () => {
     this.setState({
       errMessage: "",
@@ -35,16 +35,14 @@ class Login extends Component {
 
     try {
       let data = await handleLoginApi(this.state.username, this.state.password);
-      if (data && data.errCode != 0) {
+      if (data && data.errCode !== 0) {
         this.setState({
           errMessage: data.message,
         });
       }
       if (data && data.errCode == 0) {
-        console.log("Success");
         this.props.userLoginSuccess(data.user);
       }
-      console.log(data);
     } catch (error) {
       if (error.response) {
         if (error.response.data) {
@@ -54,6 +52,7 @@ class Login extends Component {
       // console.log("show error", error.response.data.errMessage);
     }
   };
+
   handleShowPassword = () => {
     this.setState({
       isShowPassword: !this.state.isShowPassword,
@@ -67,7 +66,9 @@ class Login extends Component {
           <div className="login-content row">
             <div className="col-12 text-center login-text">Login</div>
             <div className="col-12 form-group">
-              <label className="col-12">Username</label>
+              <label className="col-12" style={{ fontWeight: "700" }}>
+                Username
+              </label>
               <input
                 value={this.state.username}
                 onChange={(e) => this.handleOnChangeUsername(e)}
@@ -77,7 +78,9 @@ class Login extends Component {
               />
             </div>
             <div className="col-12 form-group">
-              <label className="col-12">Password</label>
+              <label className="col-12" style={{ fontWeight: "700" }}>
+                Password
+              </label>
               <div className="custom-input-password">
                 <input
                   value={this.state.password}
@@ -92,7 +95,7 @@ class Login extends Component {
                   }}
                 >
                   <i
-                    class={
+                    className={
                       this.state.isShowPassword
                         ? "fa fa-eye-slash"
                         : "fa fa-eye"
@@ -120,8 +123,8 @@ class Login extends Component {
               <span className="login-with">or connect with</span>
             </div>
             <div className="col-12 social-login">
-              <i class="fab fa-google-plus-g"></i>
-              <i class="fab fa-facebook"></i>
+              <i className="fab fa-google-plus-g"></i>
+              <i className="fab fa-facebook"></i>
             </div>
           </div>
         </div>

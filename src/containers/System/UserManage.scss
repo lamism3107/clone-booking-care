@@ -1,7 +1,20 @@
-.edit-btn {
-  width: 50px;
-  margin-right: 8px;
+@import "../../styles/variables";
+
+.add-user-btn {
+  float: right;
 }
-.delete-btn {
-  width: 50px;
+.modal-header {
+  height: 40px;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: $colormain;
+
+  button {
+    background-color: $colormain;
+    padding: 0 8px;
+    border: none;
+    i {
+      color: #fff;
+    }
+  }
 }
