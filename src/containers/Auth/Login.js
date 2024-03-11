@@ -49,7 +49,6 @@ class Login extends Component {
           this.setState({ errMessage: error.response.data.errMessage });
         }
       }
-      // console.log("show error", error.response.data.errMessage);
     }
   };
 
@@ -145,8 +144,6 @@ const mapDispatchToProps = (dispatch) => {
     userLoginSuccess: (userInfo) =>
       dispatch(actions.userLoginSuccess(userInfo)),
     userLoginFail: () => dispatch(actions.userLoginFail()),
-    userLoginSuccess: (userInfo) =>
-      dispatch(actions.userLoginSuccess(userInfo)),
   };
 };
 

@@ -9,14 +9,6 @@ const handleGetAllUsers = (inputId) => {
   return axios.get(`/api/get-all-users/?id=${inputId}`);
 };
 
-// const handleGetAllUsers = (inputId) => {
-//   return axios.get("/api/get-all-users/", {
-//     data: {
-//       id: inputId,
-//     },
-//   });
-// };
-
 const createNewUserService = (data) => {
   return axios.post("/api/create-new-user", data);
 };
@@ -29,14 +21,23 @@ const deleteUserService = (UserId) => {
   });
 };
 
-const editUserService = (data) => {
-  return axios.put(`/api/update-user`, data);
+const editUserService = (user) => {
+  return axios.put(`/api/update-user`, user);
 };
 
+const getAllcodeService = (inputData) => {
+  return axios.get(`/api/allcode?type=${inputData}`);
+};
+
+const getDoctorHomeService = (limit) => {
+  return axios.get(`/api/doctor-home?limit=${limit}`);
+};
 export {
   handleLoginApi,
   handleGetAllUsers,
   createNewUserService,
   deleteUserService,
   editUserService,
+  getAllcodeService,
+  getDoctorHomeService,
 };

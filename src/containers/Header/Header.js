@@ -15,7 +15,7 @@ class Header extends Component {
 
   render() {
     // let language = this.props.language;
-    const { processLogout, language } = this.props;
+    const { processLogout, language, userInfo } = this.props;
 
     return (
       <div className="header-container">
@@ -27,7 +27,10 @@ class Header extends Component {
         {/* nút logout */}
         <div className="languages">
           <span className="welcome">
-            <FormattedMessage id="home-header.welcome" />, Admin
+            <FormattedMessage id="home-header.welcome" />,{" "}
+            {userInfo.firstName
+              ? `${userInfo.firstName} ${userInfo.lastName}`
+              : ""}
           </span>
           <span
             className={
@@ -61,6 +64,7 @@ class Header extends Component {
 const mapStateToProps = (state) => {
   return {
     isLoggedIn: state.user.isLoggedIn,
+    userInfo: state.user.userInfo,
     language: state.app.language,
   };
 };
